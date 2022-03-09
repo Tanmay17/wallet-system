@@ -1,0 +1,25 @@
+{
+  "name": "go-high-level-assignment-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanmay17/go-high-level-assignment.git"
+  },
+  "author": "Tanmay17",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanmay17/go-high-level-assignment/issues"
+  },
+  "homepage": "https://github.com/Tanmay17/go-high-level-assignment#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.2.5"
+  }
+}
