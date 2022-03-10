@@ -1,10 +1,10 @@
 const express = require( 'express' );
 const { Validator } = require( '../../lib/plugin' );
-const { addWallet, addTransaction, getWalletTransaction, getWallet } = require( './handler' );
+const { createWallet, addTransaction, getWalletTransaction, getWallet } = require( './handler' );
 
 const router = express.Router();
 
-router.post( '/setup', Validator.validate( 'addWallet' ), addWallet );
+router.post( '/setup', Validator.validate( 'createWallet' ), createWallet );
 
 router.post( '/transact/:walletId', Validator.validate( 'addTransaction' ), addTransaction );
 
