@@ -52,8 +52,8 @@ const addTransaction = async ( req, res ) => {
     const transaction = await TransactionService.addTransaction( req.body, walletId );
     if ( !transaction ) {
 
-      console.error( `POST /transact/:walletId => Some error occured while adding transaction in Wallet(${walletId})` );
-      return res.status( 422 ).json( { message: `Unable to add the transactionin a Wallet(${walletId})` } );
+      console.error( `POST /transact/:walletId => Some error occured while adding transaction in Wallet` );
+      return res.status( 422 ).json( { message: `Unable to add the transactionin a Wallet` } );
 
     }
     console.log( `POST /transact/:walletId => Added transaction in a Wallet(${walletId})` );
@@ -69,6 +69,37 @@ const addTransaction = async ( req, res ) => {
 };
 
 const getWalletTransaction = async ( req, res ) => {
+  const errors = validationResult( req );
+
+  if ( !errors.isEmpty() ) {
+        
+    return res.status( 400 ).json( { errors: errors.array() } );
+        
+  }
+  
+  try {
+
+    const { walletId } = req.query;
+
+    console.log( `GET /transaction => Fetching Transaction in Wallet(${walletId})` );
+    const transactionData = await TransactionService.getWalletTransactionHistory( req.query );
+
+    if ( !transactionData ) {
+
+      console.error( `GET /transaction => Some error occured while fetching trades` );
+      return res.status( 422 ).json( { message: 'Unable to fetch transaction' } );
+
+    }
+    console.log( `GET /transaction => Fetched Transaction in Wallet(${walletId})` );
+
+    return res.status( 200 ).json( { data: transactionData } );
+    
+  } catch ( err ) {
+
+    console.error( 'GET /transaction =>', err.message );
+    return res.status( 500 );
+
+  }
 };
 
 const getWallet = async ( req, res ) => {
