@@ -8,7 +8,7 @@ router.post( '/setup', Validator.validate( 'createWallet' ), createWallet );
 
 router.post( '/transact/:walletId', Validator.validate( 'addTransaction' ), addTransaction );
 
-router.get( '/transaction', Validator.validate( 'getWalletTransaction' ), getWalletTransaction );
+router.get( '/transactions', Validator.validate( 'getWalletTransaction' ), getWalletTransaction );
 
 router.get( '/wallet/:id', Validator.validate( 'getWallet' ), getWallet );
 

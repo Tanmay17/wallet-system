@@ -83,24 +83,24 @@ const getWalletTransaction = async (req, res) => {
     const { walletId } = req.query;
 
     console.log(
-      `GET /transaction => Fetching Transaction in Wallet(${walletId})`
+      `GET /transactions => Fetching Transaction in Wallet(${walletId})`
     );
     const transactionData =
       await TransactionService.getWalletTransactionHistory(req.query);
 
     if (!transactionData) {
       console.error(
-        `GET /transaction => Some error occured while fetching trades`
+        `GET /transactions => Some error occured while fetching transaction`
       );
       return res.status(422).json({ message: "Unable to fetch transaction" });
     }
     console.log(
-      `GET /transaction => Fetched Transaction in Wallet(${walletId})`
+      `GET /transactions => Fetched Transaction in Wallet(${walletId})`
     );
 
     return res.status(200).json({ data: transactionData });
   } catch (err) {
-    console.error("GET /transaction =>", err.message);
+    console.error("GET /transactions =>", err.message);
     return res.status(500);
   }
 };
