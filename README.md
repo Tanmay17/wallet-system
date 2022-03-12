@@ -30,7 +30,13 @@
             ```json{
             { data: { id, balance, transactionId, name’, date } }
         - StatusCode `422`
+            ```json{
+            { message: "" }
         - StatusCode `400`
+            ```json{
+            { errors: [{value: "", msg: "", param: "", location: "" }
+    ]
+}
         - StatusCode `500`
     
 2. `POST /transact/:walletId` : To make transaction (Credit/Debit amount)
@@ -42,7 +48,11 @@
             ```json{
             { data: { balance, transactionId } }
         - StatusCode `422`
+            ```json{
+            { message: "" }
         - StatusCode `400`
+            ```json{
+            { errors: [{value: "", msg: "", param: "", location: "" }
         - StatusCode `500`
 
 3. `GET /transactions` : To fetch transactions history of a wallet
@@ -55,7 +65,11 @@
             ```json{
             { data: [ { id, walletId, amount, balance, description, date, type }, ... ] }
         - StatusCode `422`
+            ```json{
+            { message: "" }
         - StatusCode `400`
+            ```json{
+            { errors: [{value: "", msg: "", param: "", location: "" }
         - StatusCode `500`
         
 4. `GET /wallet/:id` : To fetch wallet information
@@ -64,5 +78,9 @@
             ```json{
             { data: { id, balance, name, date } }
         - StatusCode `422`
+            ```json{
+            { message: "" }
         - StatusCode `400`
+            ```json{
+            { errors: [{value: "", msg: "", param: "", location: "" }
         - StatusCode `500`
